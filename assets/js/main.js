@@ -49,6 +49,7 @@ Ad esempio:
 function generateGrid(){
 
 const containerEl = document.querySelector('.container')
+containerEl.innerHTML = ("")
 const difficulty = Number(document.querySelector(".form-select").value)
 console.log(difficulty);
 
@@ -64,8 +65,15 @@ if (difficulty === 1 ) {
 
 for (let i = 0; i < cellMax; i++) {
   let numberCell = i+1
+
+  if(cellMax === 100){
   const cell = `<div class="cell">${numberCell}</div>`;
   containerEl.innerHTML += cell;
+} else if (cellMax === 81){
+   const cell = `<div style="width:calc(100%/9)" class="cell">${numberCell}</div>`;
+   containerEl.innerHTML += cell;
+}else{const cell = `<div style="width:calc(100%/7)" class="cell">${numberCell}</div>`;
+   containerEl.innerHTML += cell;}
 }
 
 const cellEl = document.querySelectorAll('.cell')
