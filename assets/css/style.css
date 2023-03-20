@@ -1,0 +1,26 @@
+ *{
+ margin:0;
+ padding: 0 !important;;
+ box-sizing:border-box;
+ /* border: 1px solid ; */
+}
+
+.container{
+    width: 800px;
+    margin: auto;
+    display: flex;
+    flex-wrap:wrap ;
+}
+
+.cell{
+    width: calc(10%);
+    aspect-ratio: 1;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg_green{
+    background-color: greenyellow;
+}
