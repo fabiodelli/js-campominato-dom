@@ -6,10 +6,13 @@
 }
 
 .container{
-    width: 800px;
+    width: 600px !important;
     margin: auto;
     display: flex;
     flex-wrap:wrap ;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .cell{
@@ -26,4 +29,13 @@
 }
 .bg_red{
     background-color: red;
+}
+
+h1{
+    color: red;
+    position: absolute;
+    top: 10%;
+    background-color: blue;
+    text-align: center;
+    padding: 2rem !important;
 }

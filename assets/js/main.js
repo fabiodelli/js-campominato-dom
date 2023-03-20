@@ -46,7 +46,11 @@ Ad esempio:
 //classList
 //toggle
 
+//Dichiaro funzione per generare la griglia
+
 function generateGrid(){
+
+//Dichiaro variabili utili 
 
 const containerEl = document.querySelector('.container')
 containerEl.innerHTML = ("")
@@ -54,18 +58,27 @@ const difficulty = Number(document.querySelector(".form-select").value)
 const boom = []
 let cellMax = 0
 
+//Assegno ad' ogni valore della difficulty una quantita di celle da creare
+
 if (difficulty === 1 ) {
    cellMax = 100
 }else if(difficulty === 2){
    cellMax = 81
-} else{
+}else if(difficulty === 3){
    cellMax = 49
+}else if(difficulty === 0) {
+   cellMax = 0
 }
+console.log(difficulty)
+
+//genero 16 numeri casuali compresi tra 1 e 100 compresi
 
 for (let i = 0; i < 16; i++) {
    const BoomValue = Math.floor(Math.random()*100+1)
    boom.push(BoomValue)
 }
+
+// Genero le caselle in base alla difficulty selezionata
 
 for (let i = 0; i < cellMax; i++) {
   let numberCell = i+1
@@ -76,17 +89,24 @@ for (let i = 0; i < cellMax; i++) {
 } else if (cellMax === 81){
    const cell = `<div style="width:calc(100%/9)" class="cell">${numberCell}</div>`;
    containerEl.innerHTML += cell;
-}else{const cell = `<div style="width:calc(100%/7)" class="cell">${numberCell}</div>`;
-   containerEl.innerHTML += cell;}
+} else if (cellMax === 49){const cell = `<div style="width:calc(100%/7)" class="cell">${numberCell}</div>`;
+   containerEl.innerHTML += cell;
+} else if (cellMax === 0){
+   containerEl.innerHTML = '<h1>Select difficulty</h1>'}
 }
 
+//Seleziono tutte le celle
+
 const cellEl = document.querySelectorAll('.cell')
+
+// Rendo dinamiche le celle al click
  
 for (let i = 0; i < cellEl.length; i++) {
   const tisCell = cellEl[i];
   tisCell.addEventListener("click",function(){
   if (boom.includes(i) ) {
    tisCell.classList.toggle("bg_red")
+   containerEl.innerHTML += "<h1>Try again <br> Press play to generate new field</h1>"
   }else{
    tisCell.classList.toggle("bg_green")
   }
@@ -94,3 +114,4 @@ for (let i = 0; i < cellEl.length; i++) {
 }
 }
 
+ 
