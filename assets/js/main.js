@@ -78,6 +78,8 @@ for (let i = 0; i < 16; i++) {
    boom.push(BoomValue)
 }
 
+console.log(boom)
+
 // Genero le caselle in base alla difficulty selezionata
 
 for (let i = 0; i < cellMax; i++) {
@@ -104,7 +106,7 @@ const cellEl = document.querySelectorAll('.cell')
 for (let i = 0; i < cellEl.length; i++) {
   const tisCell = cellEl[i];
   tisCell.addEventListener("click",function(){
-  if (boom.includes(i) ) {
+  if (boom.includes(i+1) ) {
    tisCell.classList.toggle("bg_red")
    containerEl.innerHTML += "<h1>Try again <br> Press play to generate new field</h1>"
   }else{
