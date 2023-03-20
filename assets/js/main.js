@@ -51,8 +51,7 @@ function generateGrid(){
 const containerEl = document.querySelector('.container')
 containerEl.innerHTML = ("")
 const difficulty = Number(document.querySelector(".form-select").value)
-console.log(difficulty);
-
+const boom = []
 let cellMax = 0
 
 if (difficulty === 1 ) {
@@ -61,6 +60,11 @@ if (difficulty === 1 ) {
    cellMax = 81
 } else{
    cellMax = 49
+}
+
+for (let i = 0; i < 16; i++) {
+   const BoomValue = Math.floor(Math.random()*100+1)
+   boom.push(BoomValue)
 }
 
 for (let i = 0; i < cellMax; i++) {
@@ -81,8 +85,11 @@ const cellEl = document.querySelectorAll('.cell')
 for (let i = 0; i < cellEl.length; i++) {
   const tisCell = cellEl[i];
   tisCell.addEventListener("click",function(){
-  tisCell.classList.toggle("bg_green")
-  console.log(i+1)
+  if (boom.includes(i) ) {
+   tisCell.classList.toggle("bg_red")
+  }else{
+   tisCell.classList.toggle("bg_green")
+  }
   })
 }
 }
