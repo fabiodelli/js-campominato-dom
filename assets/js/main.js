@@ -109,12 +109,12 @@ for (let i = 0; i < cellEl.length; i++) {
   thisCell.addEventListener("click",function(){
   if (boom.includes(i+1) ) {
    thisCell.classList.toggle("bg_red")
-   containerEl.innerHTML += "<h1>Try again <br> Press play to generate new field</h1>"
+   containerEl.innerHTML += `<h1>Try again <br> Your score is ${bgGreenAr.length} <br> Press play to generate new field</h1>`
   }else{
    thisCell.classList.toggle("bg_green")
    bgGreenAr.push(thisCell)
    if (bgGreenAr.length === cellMax - 16 ) {
-   containerEl.innerHTML += "<h1>You have win</h1>"
+   containerEl.innerHTML += `<h1>You have win <br> Your score is ${bgGreenAr.length}</h1>`
    }}
   })
 }}
