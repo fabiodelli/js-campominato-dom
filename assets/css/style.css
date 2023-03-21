@@ -40,3 +40,8 @@ h1{
     text-align: center;
     padding: 2rem !important;
 }
+
+.made_by{
+    position: absolute;
+    bottom: 1vh;
+}

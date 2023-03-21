@@ -66,19 +66,18 @@ if (difficulty === 1 ) {
    cellMax = 81
 }else if(difficulty === 3){
    cellMax = 49
-}else if(difficulty === 0) {
-   cellMax = 0
-}
-console.log(difficulty)
-
-//genero 16 numeri casuali compresi tra 1 e 100 compresi
-
-for (let i = 0; i < 16; i++) {
-   const BoomValue = Math.floor(Math.random()*100+1)
-   boom.push(BoomValue)
 }
 
-console.log(boom)
+//genero 16 numeri casuali tra 1 e 100 compresi
+
+while (boom.length <= 15) {
+   const boomValue = Math.floor(Math.random()*cellMax+1)
+   const boomOK = boom.includes(boomValue)
+   if (boomOK !== true) {
+      boom.push(boomValue)
+   }
+}
+console.log(boom);
 
 // Genero le caselle in base alla difficulty selezionata
 
@@ -91,29 +90,29 @@ for (let i = 0; i < cellMax; i++) {
 } else if (cellMax === 81){
    const cell = `<div style="width:calc(100%/9)" class="cell">${numberCell}</div>`;
    containerEl.innerHTML += cell;
-} else if (cellMax === 49){const cell = `<div style="width:calc(100%/7)" class="cell">${numberCell}</div>`;
+} else{const cell = `<div style="width:calc(100%/7)" class="cell">${numberCell}</div>`;
    containerEl.innerHTML += cell;
-} else if (cellMax === 0){
-   containerEl.innerHTML = '<h1>Select difficulty</h1>'}
-}
+}}
 
 //Seleziono tutte le celle
 
 const cellEl = document.querySelectorAll('.cell')
-
+let bgGreenAr =[]
 // Rendo dinamiche le celle al click
  
 for (let i = 0; i < cellEl.length; i++) {
-  const tisCell = cellEl[i];
-  tisCell.addEventListener("click",function(){
+  const thisCell = cellEl[i];
+  thisCell.addEventListener("click",function(){
   if (boom.includes(i+1) ) {
-   tisCell.classList.toggle("bg_red")
+   thisCell.classList.toggle("bg_red")
    containerEl.innerHTML += "<h1>Try again <br> Press play to generate new field</h1>"
   }else{
-   tisCell.classList.toggle("bg_green")
-  }
+   thisCell.classList.toggle("bg_green")
+   bgGreenAr.push(thisCell)
+   if (bgGreenAr.length === cellMax - 16 ) {
+   containerEl.innerHTML += "<h1>You have win</h1>"
+   }}
   })
-}
-}
+}}
 
  
