@@ -58,7 +58,7 @@ const difficulty = Number(document.querySelector(".form-select").value)
 const boom = []
 let cellMax = 0
 
-//Assegno ad' ogni valore della difficulty una quantita di celle da creare
+//Assegno ad' ogni valore della difficulty il numero di celle da creare
 
 if (difficulty === 1 ) {
    cellMax = 100
@@ -70,7 +70,7 @@ if (difficulty === 1 ) {
 
 //genero 16 numeri casuali tra 1 e 100 compresi
 
-while (boom.length <= 15) {
+while (boom.length < 16) {
    const boomValue = Math.floor(Math.random()*cellMax+1)
    const boomOK = boom.includes(boomValue)
    if (boomOK !== true) {
@@ -97,7 +97,11 @@ for (let i = 0; i < cellMax; i++) {
 //Seleziono tutte le celle
 
 const cellEl = document.querySelectorAll('.cell')
+
+//Creo un'array per le caselle che diventeranno verdi al click
+
 let bgGreenAr =[]
+
 // Rendo dinamiche le celle al click
  
 for (let i = 0; i < cellEl.length; i++) {
